@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+CRUD - Update
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="container">
+	<form method = 'POST'>
+        {% csrf_token %}
+        <table>
+            <div class = "title">
+                <span>제목 : </span>
+                {{form.title}} 
+            </div>
+            <div class = "body">
+                <span>내용</span>
+                <br>
+                {{form.body}}
+            </div>
+        </table>
+	  <br>
+      <input class="btn btn-success" type="submit" value="저장">
+      <button type = "button" class="btn btn-danger" onclick="location.href='{% url 'read' %}'">취소</button>
+  </form>
+</div>
+{% endblock %}

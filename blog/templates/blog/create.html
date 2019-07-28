@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+CRUD - Create
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="container">
+	<form method = 'POST'>
+        {% csrf_token %}
+        <table>
+            <div class = "title">
+                <span>제목 : </span>
+                <input type="text" name="title"> 
+            </div>
+            <div class = "body">
+                <span>내용</span>
+                <br>
+                <textarea cols=40 rows=10 name="body"></textarea>
+            </div>
+        </table>
+	  <br>
+      <input class="btn btn-success" type="submit" value="저장">
+      <button type = "button" class="btn btn-danger" onclick="location.href='{% url 'read' %}'">취소</button>
+  </form>
+</div>
+{% endblock %}

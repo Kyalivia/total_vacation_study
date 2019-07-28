@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+CRUD - Logout
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col"></div>
+  <div class="col-6">
+      <div class="alert alert-primary" role="alert">
+          <p id="noti">로그인이 잘 되었습니다.</p>
+      </div>
+      <a href = "{% url 'login'%}"class="btn btn-outline-success">Login</a>
+  </div>
+  <div class="col"></div>
+</div>
+<script>
+  document.getElementById('noti').innerHTML="로그아웃이 잘 되었습니다."
+</script>
+{% endblock %}

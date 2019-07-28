@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+CRUD - Login
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col"></div>
+  <div class="col-6">
+      <div id = "head"></div>
+      <div class="alert alert-primary" role="alert">
+          <strong>Login</strong>
+      </div>
+      <form method="POST" action="{% url 'login'%}">
+          {% csrf_token %}
+          {{ login_form.as_p }}
+          <br>
+          <a href = "{% url 'signup'%}"class="btn btn-outline-success">Sign Up</a>
+          <input type = "submit" value="Login" class='btn btn-outline-primary'>
+      </form>
+  </div>
+  <div class="col"></div>
+</div>
+<script>
+    var parent = document.getElementById('head');
+    var appends = document.createElement('h3');
+    var texts = document.createTextNode('If you want to write something, Sign up or Login');
+
+    appends.appendChild(texts);
+    parent.appendChild(appends);
+</script>
+{% endblock %}

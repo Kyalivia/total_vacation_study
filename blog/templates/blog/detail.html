@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+Detail
+{% endblock %}
+
+{% block content %}
+<div class = "container jumbotron">
+  <h1 style="font-family:'Goyang'">{{blog.title}}</h1>
+  <p>{{blog.pub_date|date:"Y-m-d"}}</p>
+  <p>{{blog.body|linebreaksbr}}</p>
+  <button type = "button" class="btn btn-primary" onclick="location.href='{% url 'update' pk=blog.pk %}'">Update</button>
+  <button type = "button" class="btn btn-danger" onclick="location.href='{% url 'delete' pk=blog.pk %}'">Delete</button>
+  <button type = "button" class="btn btn-info" onclick="location.href='{% url 'read' %}'">돌아가기</button>
+</div>
+<hr>
+<div class = "container jumbotron">
+<div class = "card my-4">
+<h5 class = "card-header" style="font-family:'Goyang'">댓글</h5>
+<div class="card-body">
+  <form action="{% url 'detail' blog.id %}"  method = "POST">
+    {% csrf_token %}
+    <div class = "form-group">{{comment_form}}</div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+</div>
+</div>
+<hr>
+{% for comment in comments %}
+<div class = "container jumbotron">
+  <h5 class="mt-0">{{comment.text|linebreaksbr}}</h5>
+  <hr>
+</div>
+{% endfor %}
+{% endblock %}
